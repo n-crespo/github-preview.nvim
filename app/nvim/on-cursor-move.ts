@@ -19,7 +19,8 @@ export async function onCursorMove(
             desc: "Notify github-preview",
             command: `lua
                 local buftype = vim.api.nvim_get_option_value("buftype", { buf = 0 })
-                if buftype == "" then
+                local filetype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+                if buftype == "" and filetype == "markdown" then
                     local buffer = vim.api.nvim_get_current_buf()
                     local path = vim.api.nvim_buf_get_name(0)
                     local cursor_line = vim.api.nvim_win_get_cursor(0)[1]

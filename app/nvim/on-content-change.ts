@@ -38,7 +38,8 @@ export async function onContentChange(
             desc: "Notify github-preview",
             command: `lua
             local buftype = vim.api.nvim_get_option_value("buftype", { buf = 0 })
-            if buftype == "" then
+            local filetype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+            if buftype == "" and filetype == "markdown" then
                 local buffer = vim.api.nvim_get_current_buf()
                 local path = vim.api.nvim_buf_get_name(0)
                 vim.rpcnotify(${app.nvim.channelId}, "${NOTIFICATION}", buffer, path)
