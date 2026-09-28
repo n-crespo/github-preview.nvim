@@ -1,14 +1,9 @@
 import { useCallback, useContext, useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
-import { ThemeSchema } from "../../types";
+// import { ThemeSchema } from "../../types";
 import { myMermaid } from "./markdown/mermaid";
 import { websocketContext } from "./websocket-provider/context";
 
-const DEFAULT_THEME = ThemeSchema.parse(
-   JSON.parse(
-      new URLSearchParams(window.location.search).get("theme") ??
-         '{ "name": "system", "high_contrast": false }',
-   ),
-);
+const DEFAULT_THEME = "dark";
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
    const { wsRequest, currentPath, config } = useContext(websocketContext);

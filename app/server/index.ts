@@ -89,6 +89,6 @@ export function startServer<T>(app: GithubPreview, isDev: boolean): Server<T> {
    // it may differ from the requested one when allow_multiple_instances is enabled
    app.config.overrides.port = boundPort;
 
-   opener(`http://${host}:${boundPort}?theme=${JSON.stringify(app.config.overrides.theme)}`);
+   opener(`http://${host}:${boundPort}?theme=dark`);
    return server as Server<T>;
 }
